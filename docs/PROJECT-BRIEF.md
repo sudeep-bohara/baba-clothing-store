@@ -1,53 +1,100 @@
 # Project Brief — Baba Clothing
 
-## Purpose
-Build a polished, interactive website concept for Baba Clothing, Instagram handle **@babaclothing.np**. This is a portfolio-first demonstration for the owner to review, not an approved production build.
+**Status:** context and constraints for the Stage 1 concept. The authoritative requirements live in
+[PRD.md](PRD.md); this brief explains the situation behind them.
 
-## Known inputs
-- Brand name: Baba Clothing.
-- Instagram handle: @babaclothing.np.
-- User-supplied screenshots show a black-and-white identity, BA-style monogram, slogan “Your style, Your identity,” and clothing/fashion content.
-- Product scope is described as mixed fashion collections.
-- Customers may be able to visit an office, but the exact address and visiting arrangements are unknown.
-- Target market is unknown.
-- Instagram and TikTok are believed to be used; exact TikTok account and business details are unverified.
+## 1. Purpose
 
-Do not infer missing business facts.
+Build a polished, interactive storefront concept for Baba Clothing (`@babaclothing.np`) so the
+brand owner can review a credible online presence before any commercial build begins. It is a
+portfolio-grade demonstration, not an approved production store.
 
-## Concept goals
-1. Make the brand feel distinctive and credible.
-2. Provide clear product discovery and collection browsing.
-3. Demonstrate product details, selectable options, and a shopping bag using demo data.
-4. Make the experience mobile-first and accessible.
-5. Make content and assets easy to replace with owner-approved materials.
+## 2. What the owner has confirmed
 
-## Proposed pages
-- Home: campaign hero, featured collections, new arrivals, brand statement, social discovery, footer.
-- Shop: product grid, category filters, sorting, empty states.
-- Product detail: gallery, description, illustrative demo price, options where appropriate, quantity, add-to-bag.
-- Shopping bag: item summary, quantity changes, remove item, demo subtotal.
-- About: brand identity/story area with copy marked placeholder until approved.
-- Contact: social/contact placeholders and office visit information only when supplied and verified.
+- Brand name: BABA CLOTHING.
+- Instagram: `@babaclothing.np` — the only verified contact channel.
+- Slogan: "Your style, Your identity."
+- Visual identity: black and white.
+- Offer: mixed clothing collections, in general terms only.
+- The brand's own posts show a "BA"-style monogram. It is the owner's asset; the concept does not
+  recreate it.
 
-## Demo boundaries
-- Use fictional sample products and visibly mark catalogue content as demonstration content.
-- Mark placeholder prices as illustrative, not official Baba Clothing prices.
-- No working checkout, payment gateway, order submission, account system, or personal-data collection.
-- Any checkout action must explain that ordering is not enabled in this concept.
-- Do not fabricate shipping, returns, delivery coverage, stock, discounts, reviews, testimonials, business hours, or office location.
-- Use original, licensed, or properly sourced imagery. Do not reuse social-media photos without permission.
-- Do not claim owner approval or imply this is the official store.
+## 3. What is explicitly out of bounds
 
-## Technical direction
-Preferred stack: Next.js App Router, TypeScript, Tailwind CSS, Framer Motion, and Lucide icons. Use maintainable components, semantic HTML, responsive layouts, and optimized images.
+Do not infer or publish any of the following: founding date or founder, company history,
+manufacturing locations, fabric compositions, sustainability claims, certifications, awards,
+partnerships, customer counts, ratings or reviews, stock levels, discounts, shipping and returns
+terms, payment methods, prices presented as real, office or store address, opening hours, phone,
+WhatsApp, email, service area, TikTok account, or target-market demographics.
 
-## Quality gates
-- Install/build/lint/type-check successfully.
-- No broken routes or dead controls.
-- Keyboard-accessible controls, visible focus, meaningful alt text, sufficient contrast.
-- Test narrow mobile widths, tablet, and desktop.
-- Avoid horizontal overflow, layout shifts, and excessive animation.
-- No secrets or private customer data in the repository.
+If a page needs one of those values, it uses the placeholder pattern established in `lib/site.ts`
+and states that the detail is pending confirmation.
 
-## Delivery
-Work on a feature branch, commit coherent changes, and open a pull request against main. Include setup instructions, screenshots or preview URL if available, known limitations, and a concise QA report. Do not merge without review.
+## 4. Open items requiring owner confirmation
+
+| # | Question | Blocks | Fallback in the concept |
+|---|---|---|---|
+| 1 | Official logo files (SVG/PNG) and monogram usage rules | Any use of real brand marks | Text wordmark plus typographic "B" favicon |
+| 2 | Brand guideline documents, exact colour values, approved typefaces | Typography and palette finalization | Monochrome tokens in [DESIGN-SPEC.md](DESIGN-SPEC.md) §2 |
+| 3 | Which categories are actually sold | Collection structure | Five sample groupings |
+| 4 | Official catalogue: names, descriptions, sizes, colours, care | Product content | Eight sample pieces, labelled as sample |
+| 5 | Real prices and currency handling | Price display | Illustrative NPR amounts, labelled |
+| 6 | Target customer and geographic market | Copy, SEO, sizing | Neutral, market-agnostic copy |
+| 7 | Physical store or customer-facing office, and its address | Contact page | "Studio address — to confirm" |
+| 8 | Official contact details: email, phone, WhatsApp, hours, service area | Contact page, enquiries | "Not published" statuses |
+| 9 | Which social accounts are official, including TikTok | Footer and social links | Instagram only |
+| 10 | Shipping, returns, refunds, cancellation and payment terms | Checkout path, policy pages | Policies omitted; drafts explain the gap |
+| 11 | Verified brand story | About page | Position statement plus explicit non-history |
+| 12 | Domain, hosting ownership and operational responsibility | Deployment | Preview only, indexing disabled |
+| 13 | Who approves privacy and commercial policies | Legal readiness | Drafts marked not approved |
+
+## 5. Concept goals
+
+1. Make the brand feel distinctive and credible in one screen.
+2. Give products room: clear discovery, collection browsing, honest detail pages.
+3. Demonstrate the shopping experience — options, quantity, bag, totals — without pretending to
+   transact.
+4. Mobile-first and accessible by construction, not by retrofit.
+5. Make every piece of content and imagery replaceable in one place.
+
+## 6. Demo boundaries
+
+- Sample products are labelled as sample wherever a shopper could mistake them for stock.
+- Prices are marked illustrative and are never described as official.
+- No checkout, payment, order submission, account system or personal-data collection.
+- The checkout action explains that ordering is not enabled.
+- No fabricated shipping, returns, stock, discounts, reviews, hours or address.
+- Imagery is licensed, stored locally and credited; no social-media reuse.
+- Nothing claims owner approval or presents the site as the official store.
+
+## 7. Stage 1 and Stage 2
+
+| | Stage 1 — this delivery | Stage 2 — future, not started |
+|---|---|---|
+| Scope | Interactive concept with a sample catalogue | Production e-commerce |
+| Transactions | None; demo bag only | Real checkout via a payment gateway |
+| Data | None collected; bag in `localStorage` | Orders, accounts if required, shipping data |
+| Catalogue | Eight sample pieces in `lib/products.ts` | Verified catalogue and inventory management |
+| Policies | Drafts marked not approved | Legally reviewed, owner-approved |
+| Hosting | Preview, indexing disabled | Verified domain, HTTPS, indexing enabled |
+| Definition of done | [PRD.md](PRD.md) §22 | Requires a separate specification |
+
+Anything in the right-hand column must not be represented as working today.
+
+## 8. Technical direction
+
+Next.js App Router, TypeScript, Tailwind CSS, Motion and Lucide icons, deployed as static output.
+Details and the reasoning behind deviations from the PRD's suggested structure are in
+[TECHNICAL-ARCHITECTURE.md](TECHNICAL-ARCHITECTURE.md).
+
+## 9. Quality gates
+
+See [TESTING-AND-QA.md](TESTING-AND-QA.md) for the matrix and [CONTRIBUTING.md](CONTRIBUTING.md) for
+the workflow that enforces it: build, lint and typecheck green; no dead route or control; keyboard
+and screen-reader usable; no horizontal overflow; console clean; no secrets.
+
+## 10. Delivery
+
+Work on `feat/storefront-concept`, commit coherent changes, open a pull request against `main` with
+summary, screenshots, test results and known limitations. Nothing merges without review, and no
+production deployment happens without written owner authorization.

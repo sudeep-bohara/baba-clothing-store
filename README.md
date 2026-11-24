@@ -11,10 +11,14 @@ owner how a premium, monochrome storefront could feel — not to sell anything.
 | --- | --- |
 | `/` | Editorial homepage: campaign hero, collections, sample capsule, campaign split, lookbook, brand statement, social strip |
 | `/shop` | Full sample catalogue with collection filters and sorting, kept in the URL |
-| `/product/[slug]` | Product detail with gallery, size and colour selection, add-to-bag, and details accordions |
+| `/collections` | The five sample collections as an index |
+| `/collections/[slug]` | One collection: its pieces, with breadcrumbs back to the catalogue |
+| `/products/[slug]` | Product detail with gallery, size and colour selection, add-to-bag, and details accordions |
 | `/bag` | Shopping bag with quantity editing, subtotal and a checkout button that explains it is demo-only |
 | `/about` | Brand thinking, what the concept is and is not, image credits |
 | `/contact` | The one verified channel (Instagram) and explicit placeholders for everything else |
+| `/privacy` | What the concept stores (a local bag only) and what it never collects |
+| `/terms` | Plain-language rules for viewing the concept, and what real terms must cover |
 
 Interaction details worth reviewing: a slide-over bag that opens on add, a mobile menu, sticky
 catalogue filters, and reduced-motion-aware reveal animations.
@@ -38,18 +42,23 @@ Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · Motion ·
 ## Structure
 
 ```
-app/                  routes (home, shop, product/[slug], bag, about, contact, not-found)
+app/                  routes: home, shop, collections/*, products/*, bag, about,
+                      contact, privacy, terms, not-found, sitemap, robots
 components/           header, footer, bag drawer, product card/gallery, add-to-bag, ui/*
 components/home/      homepage sections
 lib/products.ts       sample catalogue — names, prices, sizes, colourways, images
-lib/media.ts          campaign and editorial imagery
+lib/collections.ts    collections derived from the catalogue and media
+lib/media.ts          campaign, editorial, collection and social imagery
 lib/site.ts           brand name, slogan, navigation, contact placeholders
+lib/seo.ts            site origin, indexing switch, social card
 public/images/        local, pre-sized demo photography
-docs/                 brief, brand direction, design spec, asset credits
+docs/                 PRD, brief, brand, design, architecture, security, policies, QA
 ```
 
-Two files control almost all content: `lib/products.ts` and `lib/site.ts`. Replacing demo
-content with real content means editing those, plus the image paths in `lib/media.ts`.
+Four modules control almost all content: `lib/site.ts` (brand facts, navigation, contact
+placeholders), `lib/products.ts` (the catalogue), `lib/collections.ts` (collections, derived from
+the catalogue) and `lib/media.ts` (imagery with alt text and focal points). Replacing demonstration
+content with real content means editing those and nothing else.
 
 ## Content rules this concept follows
 
@@ -73,15 +82,46 @@ content with real content means editing those, plus the image paths in `lib/medi
   and a screen reader.
 - The bag drawer traps focus, closes on Escape, and restores focus to the trigger.
 - Add-to-bag confirmations and filter counts announce through `aria-live`.
-- Verified at 320, 390, 768, 1024 and 1440 px with no horizontal overflow and no console errors.
+- Verified at 320, 360, 390, 768, 1024, 1280, 1440 and 1920 px with no horizontal overflow, no
+  console errors or warnings, no broken images and zero axe violations.
 - All animation respects `prefers-reduced-motion`.
 
 ## Documentation
 
-- [Project brief](docs/PROJECT-BRIEF.md)
-- [Brand direction](docs/BRAND-DIRECTION.md)
-- [Design specification](docs/DESIGN-SPEC.md)
-- [Image credits and asset manifest](docs/ASSETS.md)
+| Document | Covers |
+| --- | --- |
+| [PRD](docs/PRD.md) | Requirements, scope, IA and definition of done — the authoritative spec |
+| [Traceability](docs/TRACEABILITY.md) | Each requirement mapped to its implementation and test |
+| [Project brief](docs/PROJECT-BRIEF.md) | Context and constraints |
+| [Brand direction](docs/BRAND-DIRECTION.md) | Identity and visual rules |
+| [Design specification](docs/DESIGN-SPEC.md) | Interface by page |
+| [Technical architecture](docs/TECHNICAL-ARCHITECTURE.md) | Stack, structure, data flow |
+| [Security](docs/SECURITY.md) | Repository, application and Stage 2 rules |
+| [Privacy draft](docs/PRIVACY-POLICY-DRAFT.md) | What is stored, and what a real policy needs |
+| [Terms draft](docs/TERMS-AND-CONDITIONS-DRAFT.md) | Concept rules, and production terms |
+| [Content and asset guide](docs/CONTENT-AND-ASSET-GUIDE.md) | Governance for copy and imagery |
+| [Image credits and asset manifest](docs/ASSETS.md) | Every file, with dimensions, creator and licence |
+| [Testing and QA](docs/TESTING-AND-QA.md) | The matrix and how to repeat it |
+| [Deployment guide](docs/DEPLOYMENT-GUIDE.md) | Local, preview, rollback, launch gates |
+| [Changelog](docs/CHANGELOG.md) | What changed |
+| [Contributing](docs/CONTRIBUTING.md) | Branching, commits, review |
+
+Policy drafts are marked as drafts wherever they appear (`docs/PRIVACY-POLICY-DRAFT.md`,
+`docs/TERMS-AND-CONDITIONS-DRAFT.md`, and the `/privacy` and `/terms` pages). None of them is a
+legally reviewed document, and publishing them does not make the site compliant.
+
+## Project status
+
+**Stage 1 — interactive concept: delivered.** Ten routes plus 404, a generated sitemap and robots
+file, a working demonstration bag, and the Stage 1 documentation set.
+
+**Stage 2 — production e-commerce: not started.** No checkout, payment gateway, inventory,
+accounts, order handling or analytics exists, and none may be represented as working. The open
+questions that gate Stage 2 are listed in
+[docs/PROJECT-BRIEF.md](docs/PROJECT-BRIEF.md#4-open-items-requiring-owner-confirmation).
+
+Nothing has been deployed and the branch has not been merged. Search indexing is disabled by
+default so the concept cannot be mistaken for the brand's official site.
 
 ## Before any production use
 
@@ -89,4 +129,7 @@ content with real content means editing those, plus the image paths in `lib/medi
 2. Supply the approved logo files and confirm the monogram usage rules.
 3. Replace the sample catalogue with real products, prices and stock.
 4. Confirm delivery, returns, payment and contact details, then replace the placeholders.
-5. Get written approval from the brand owner for the concept itself.
+5. Have the privacy policy and terms reviewed and approved, and write the shipping, returns and
+   payment policies from verified operating facts.
+6. Get written approval from the brand owner for the concept itself, then follow
+   [docs/DEPLOYMENT-GUIDE.md](docs/DEPLOYMENT-GUIDE.md) §5.
