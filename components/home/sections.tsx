@@ -7,7 +7,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { campaign } from "@/lib/media";
-import { categories } from "@/lib/products";
+import { collections as allCollections } from "@/lib/collections";
 import { site } from "@/lib/site";
 
 export function SloganMarquee() {
@@ -36,26 +36,11 @@ export function SloganMarquee() {
   );
 }
 
-const collectionTiles = [
-  {
-    id: "tailoring" as const,
-    label: "Tailoring",
-    copy: "Suiting, sets and clean shoulders.",
-    image: campaign.collections.tailoring,
-  },
-  {
-    id: "denim" as const,
-    label: "Denim",
-    copy: "Straight lines, firm cloth, quiet fades.",
-    image: campaign.collections.denim,
-  },
-  {
-    id: "essentials" as const,
-    label: "Essentials",
-    copy: "The pieces everything else sits on.",
-    image: campaign.collections.essentials,
-  },
-];
+const homeCollections = ["tailoring", "denim", "essentials"] as const;
+
+const collectionTiles = homeCollections
+  .map((slug) => allCollections.find((collection) => collection.slug === slug))
+  .filter((collection) => collection !== undefined);
 
 export function Collections() {
   return (
@@ -64,15 +49,13 @@ export function Collections() {
         <SectionHeading
           eyebrow="Collections"
           title="Three ways in"
-          action={{ label: "All pieces", href: "/shop" }}
+          action={{ label: "All collections", href: "/collections" }}
         />
         <ul className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-6">
-          {collectionTiles.map((tile, index) => {
-            const count = categories.find((category) => category.id === tile.id);
-            return (
-              <li key={tile.id}>
+          {collectionTiles.map((tile, index) => (
+              <li key={tile.slug}>
                 <Reveal delay={index * 0.06}>
-                  <Link href={`/shop?category=${tile.id}`} className="group block">
+                  <Link href={`/collections/${tile.slug}`} className="group block">
                     <div className="relative aspect-4/3 overflow-hidden bg-bone">
                       <Image
                         src={tile.image.src}
@@ -87,10 +70,10 @@ export function Collections() {
                       <div>
                         <h3 className="text-label">{tile.label}</h3>
                         <p className="mt-2 max-w-[22ch] text-sm leading-relaxed text-ink/65">
-                          {tile.copy}
+                          {tile.blurb}
                         </p>
                         <p className="mt-2 text-[0.625rem] uppercase tracking-[0.2em] text-ink/60">
-                          {count?.blurb}
+                          {tile.items.length} sample {tile.items.length === 1 ? "piece" : "pieces"}
                         </p>
                       </div>
                       <ArrowUpRight
@@ -102,8 +85,7 @@ export function Collections() {
                   </Link>
                 </Reveal>
               </li>
-            );
-          })}
+          ))}
         </ul>
       </Container>
     </section>

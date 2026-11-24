@@ -3,12 +3,14 @@ import { Suspense } from "react";
 import { Container } from "@/components/ui/container";
 import { ShopBrowser } from "@/components/shop/shop-browser";
 import { products } from "@/lib/products";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Shop",
   description:
     "Browse the sample capsule — tailoring, denim, essentials and accessories. Demonstration catalogue with illustrative prices.",
-};
+  path: "/shop",
+});
 
 export default function ShopPage() {
   return (

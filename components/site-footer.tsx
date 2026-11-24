@@ -3,7 +3,7 @@ import { ArrowUp } from "lucide-react";
 import { InstagramIcon } from "@/components/icons";
 import { Container } from "@/components/ui/container";
 import { Wordmark } from "@/components/wordmark";
-import { footerNav, site } from "@/lib/site";
+import { footerNav, footerSecondaryNav, site } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -67,6 +67,16 @@ export function SiteFooter() {
                   Image credits
                 </Link>
               </li>
+              {footerSecondaryNav.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-paper/75 transition-colors hover:text-paper"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
             <a
               href="#top"

@@ -81,10 +81,15 @@ export const campaign = {
     },
   ] satisfies CampaignImage[],
   collections: {
+    outerwear: {
+      src: "/images/campaign/lookbook-02.jpg",
+      alt: "Full-length black and white photograph of a model in a dark single-breasted blazer against a brick wall",
+      focal: "center 25%",
+    },
     tailoring: {
-      src: "/images/collections/tailoring.jpg",
-      alt: "Full-length black and white photograph of a model in tailored outerwear",
-      focal: "center 30%",
+      src: "/images/products/ivory-tailored-set-1.jpg",
+      alt: "Black and white studio photograph of a model in an ivory tailored shirt and trousers",
+      focal: "center 35%",
     },
     denim: {
       src: "/images/collections/denim.jpg",

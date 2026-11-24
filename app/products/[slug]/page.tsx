@@ -14,6 +14,7 @@ import {
   relatedProducts,
 } from "@/lib/products";
 import { formatPrice } from "@/lib/format";
+import { pageMetadata } from "@/lib/seo";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -25,10 +26,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) return { title: "Piece not found" };
-  return {
+  return pageMetadata({
     title: product.name,
     description: `${product.summary} Sample product from the Baba Clothing concept catalogue.`,
-  };
+    path: `/products/${product.slug}`,
+  });
 }
 
 export default async function ProductPage({ params }: PageProps) {

@@ -55,7 +55,7 @@ export function BagView() {
                   {entries.map((entry) => (
                     <li key={entry.key} className="flex gap-4 py-6 sm:gap-6">
                       <Link
-                        href={`/product/${entry.product.slug}`}
+                        href={`/products/${entry.product.slug}`}
                         className="relative aspect-4/5 w-24 shrink-0 overflow-hidden bg-bone sm:w-32"
                       >
                         <Image
@@ -72,7 +72,7 @@ export function BagView() {
                         <div className="flex items-start justify-between gap-4">
                           <div className="min-w-0">
                             <Link
-                              href={`/product/${entry.product.slug}`}
+                              href={`/products/${entry.product.slug}`}
                               className="text-sm font-medium hover:underline underline-offset-4 sm:text-base"
                             >
                               {entry.product.name}

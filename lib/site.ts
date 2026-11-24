@@ -12,6 +12,7 @@ export const site = {
 
 export const primaryNav = [
   { label: "Shop", href: "/shop" },
+  { label: "Collections", href: "/collections" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ] as const;
@@ -19,9 +20,16 @@ export const primaryNav = [
 export const footerNav = [
   { label: "Home", href: "/" },
   { label: "Shop", href: "/shop" },
+  { label: "Collections", href: "/collections" },
   { label: "Shopping bag", href: "/bag" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+] as const;
+
+/** Secondary links live in the footer only, so the header stays uncluttered. */
+export const footerSecondaryNav = [
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
 ] as const;
 
 /**

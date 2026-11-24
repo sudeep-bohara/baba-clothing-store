@@ -34,7 +34,6 @@ description in one place. If you overwrite a file in place, clear the image cach
 | `/images/campaign/store-01.jpg` | 1024×683 | Racks men's apparel walls clothes | Unknown | CC0 | https://www.rawpixel.com/image/3284475/free-photo-image-fashion-shop-clothes |
 | `/images/collections/denim.jpg` | 1000×667 | Denim Jeans Pocket | Unknown | CC0 | https://www.rawpixel.com/image/5966490/denim-jeans-pocket |
 | `/images/collections/essentials.jpg` | 960×640 | Female Monochrome | Matt Moloney | CC0 | https://stocksnap.io/photo/female-monochrome-Z3HY4JUDN2 |
-| `/images/collections/tailoring.jpg` | 1024×1024 | dalton-luka-bomber-jacket(b&w) | anonymouschinchompa | CC0 | https://www.flickr.com/photos/188414854@N08/49871873457 |
 | `/images/products/court-sneaker-1.jpg` | 1024×768 | Sneaker shoes, fashion streetwear | Unknown | CC0 | https://www.rawpixel.com/image/6031918/photo-image-public-domain-fashion-free |
 | `/images/products/court-sneaker-2.jpg` | 1024×683 | Sneaker shoes, fashion streetwear | Unknown | CC0 | https://www.rawpixel.com/image/6032764/photo-image-public-domain-fashion-free |
 | `/images/products/merino-shell-1.jpg` | 800×1200 | Female Monochrome | Matt Moloney | CC0 | https://stocksnap.io/photo/female-monochrome-92OOGBFONP |

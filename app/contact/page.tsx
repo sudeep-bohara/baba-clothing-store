@@ -5,12 +5,14 @@ import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { contactPlaceholders, site } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
     "Contact placeholders for the Baba Clothing storefront concept. Business details will be published once verified.",
-};
+  path: "/contact",
+});
 
 const icons = [MapPin, Mail, Phone, Mail, MapPin];
 

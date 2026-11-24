@@ -124,7 +124,7 @@ export function BagDrawer() {
                   {entries.map((entry) => (
                     <li key={entry.key} className="flex gap-4 py-5">
                       <Link
-                        href={`/product/${entry.product.slug}`}
+                        href={`/products/${entry.product.slug}`}
                         onClick={closeBag}
                         className="relative aspect-[4/5] w-20 shrink-0 overflow-hidden bg-bone"
                       >
@@ -140,7 +140,7 @@ export function BagDrawer() {
                         <div className="flex items-start justify-between gap-3">
                           <div className="min-w-0">
                             <Link
-                              href={`/product/${entry.product.slug}`}
+                              href={`/products/${entry.product.slug}`}
                               onClick={closeBag}
                               className="block truncate text-sm font-medium hover:underline underline-offset-4"
                             >

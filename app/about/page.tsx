@@ -7,12 +7,14 @@ import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { campaign } from "@/lib/media";
 import { site } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
     "A concept storefront for Baba Clothing — the thinking behind the monochrome, editorial direction.",
-};
+  path: "/about",
+});
 
 const isList = [
   "A design concept for a premium, monochrome storefront.",

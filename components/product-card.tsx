@@ -19,7 +19,7 @@ export function ProductCard({
   return (
     <article className="group relative">
       <Link
-        href={`/product/${product.slug}`}
+        href={`/products/${product.slug}`}
         className="block focus-visible:outline-offset-4"
       >
         <div className="relative aspect-4/5 overflow-hidden bg-bone">

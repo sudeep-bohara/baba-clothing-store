@@ -13,11 +13,13 @@ import {
 } from "@/components/home/sections";
 import { featuredProducts } from "@/lib/products";
 import { site } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: `${site.name} — ${site.slogan}`,
   description: site.description,
-};
+  path: "/",
+});
 
 export default function HomePage() {
   return (

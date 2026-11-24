@@ -6,6 +6,7 @@ import { BagDrawer } from "@/components/bag-drawer";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { site } from "@/lib/site";
+import { allowIndexing, ogImage, siteUrl } from "@/lib/seo";
 
 const sans = Inter_Tight({
   subsets: ["latin"],
@@ -22,13 +23,33 @@ const display = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${site.name} — ${site.slogan}`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
-  // This is an unofficial concept study, so keep it out of search results.
-  robots: { index: false, follow: false },
+  applicationName: site.name,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: `${site.name} — concept preview`,
+    title: `${site.name} — ${site.slogan}`,
+    description: site.description,
+    url: "/",
+    images: [ogImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — ${site.slogan}`,
+    description: site.description,
+    images: [ogImage.url],
+  },
+  // Unofficial concept study: stays out of search results until the owner approves
+  // a production launch. Flip with NEXT_PUBLIC_ALLOW_INDEXING — see docs/DEPLOYMENT-GUIDE.md.
+  robots: allowIndexing
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
 };
 
 export const viewport: Viewport = {
