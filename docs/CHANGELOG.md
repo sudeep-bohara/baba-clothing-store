@@ -16,8 +16,12 @@ demonstration; no version has been released and nothing here is production softw
   production launch.
 - Canonical URLs on every route, plus Open Graph and Twitter card metadata with a local
   1200×630 social image.
-- Stage 1 documentation: PRD, technical architecture, security, privacy and terms drafts, content
-  and asset guide, testing and QA, deployment guide, contributing guide and this changelog.
+- Stage 1 documentation: PRD, requirements traceability, technical architecture, security, privacy
+  and terms drafts, content and asset guide, testing and QA, deployment guide, contributing guide
+  and this changelog.
+- The project brief, brand direction and design specification were reconciled with the PRD: one
+  navigation, one token table, the full page inventory and thirteen open items awaiting owner
+  confirmation.
 - `.env.example` documenting the two public build-time variables.
 
 ### Changed
