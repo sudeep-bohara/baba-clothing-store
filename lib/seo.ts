@@ -2,14 +2,20 @@
  * Deployment configuration.
  *
  * `NEXT_PUBLIC_SITE_URL` sets the absolute base for canonical URLs, Open Graph tags and the
- * sitemap. Until the brand owner confirms a domain, it falls back to the local preview origin.
+ * sitemap. When it is unset, a Vercel deployment falls back to its own `VERCEL_URL` so preview
+ * builds advertise themselves rather than localhost. Local development keeps the localhost
+ * origin, and no domain is assumed anywhere.
  *
  * Indexing stays off for the concept: this is an unofficial study and must not compete with
  * the brand's own site in search results. Set `NEXT_PUBLIC_ALLOW_INDEXING=true` only after the
  * owner approves a production launch — see docs/DEPLOYMENT-GUIDE.md.
  */
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+const vercelUrl = process.env.VERCEL_URL?.trim();
+
 export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+  configuredSiteUrl ||
+  (vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000")
 ).replace(/\/$/, "");
 
 export const allowIndexing = process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true";

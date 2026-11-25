@@ -19,7 +19,7 @@ Requires Node.js 20 or newer. There are no runtime environment variables in Stag
 
 | Variable | Default | Effect |
 |---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | `http://localhost:3000` | Absolute origin for canonical URLs, Open Graph data, sitemap and robots |
+| `NEXT_PUBLIC_SITE_URL` | unset | Absolute origin for canonical URLs, Open Graph data, sitemap and robots. When unset, a Vercel deployment uses its own `VERCEL_URL` over HTTPS; anything else falls back to `http://localhost:3000` |
 | `NEXT_PUBLIC_ALLOW_INDEXING` | `false` | When `true`, `robots` allows crawling and page metadata switches to `index, follow` |
 
 Both are public by design — they contain no secrets. Never place a real credential in a
@@ -29,7 +29,8 @@ Both are public by design — they contain no secrets. Never place a real creden
 
 1. Import the repository into Vercel (or any static host) and keep the framework preset as
    Next.js.
-2. Set `NEXT_PUBLIC_SITE_URL` to the preview origin so canonical URLs and the sitemap are correct.
+2. Leave `NEXT_PUBLIC_SITE_URL` unset to inherit the deployment's own `VERCEL_URL`, or set it to a
+   stable preview origin so canonical URLs and the sitemap survive per-deployment hostnames.
 3. Leave `NEXT_PUBLIC_ALLOW_INDEXING` unset (`false`). The concept must not compete with the
    brand's own site in search, and a preview must never read as the official store.
 4. Confirm the concept banner, footer disclaimer and `/terms` draft notice are present on the
