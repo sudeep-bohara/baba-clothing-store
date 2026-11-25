@@ -73,19 +73,21 @@ allows.
 
 | Route | Rendering |
 |---|---|
-| `/`, `/shop`, `/about`, `/contact`, `/bag`, `/privacy`, `/terms`, `/collections` | static |
+| `/`, `/about`, `/contact`, `/bag`, `/privacy`, `/terms`, `/collections` | static |
+| `/shop` | server-rendered; `?category` and `?sort` are validated against the catalogue and resolved on the server, so every filter state ships its products in the HTML |
 | `/collections/[slug]` (5) | static, one file per collection |
 | `/products/[slug]` (8) | static, one file per product |
 | `/sitemap.xml`, `/robots.txt` | generated at build |
 | `/_not-found` | static |
 
-Static output is what makes the concept trivially safe: there is no server surface to attack and
-no data store to leak.
+Static output keeps the concept safe: there is no data store to leak, and `/shop` is the only
+route that renders on request. It reads nothing but two query parameters, both checked against the
+local catalogue, and it renders from the same in-repo data as every other route.
 
 ## 5. Component conventions
 
 - Server components by default; `"use client"` only where interaction requires it (header, bag,
-  shop browser, gallery, add-to-bag, quantity stepper, reveal animation).
+  shop toolbar, gallery, add-to-bag, quantity stepper, reveal animation).
 - Props are typed inline next to the component; shared domain types live in `lib/`.
 - Presentation components never import page-level data; they receive it.
 - `Container` fixes page gutters; `text-display` / `text-label` utilities fix the type scale.

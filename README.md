@@ -28,7 +28,7 @@ catalogue filters, and reduced-motion-aware reveal animations.
 ```bash
 npm install
 npm run dev        # http://localhost:3000
-npm run build      # production build (all routes prerender)
+npm run build      # production build (routes prerender; /shop renders per filter state)
 npm run lint
 npm run typecheck
 ```

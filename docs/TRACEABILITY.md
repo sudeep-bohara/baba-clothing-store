@@ -26,7 +26,7 @@ Verification methods used throughout:
 | FR-4.2c | Structured catalogue, no duplicated product literals | Single source `lib/products.ts`; collections derived in `lib/collections.ts` | L, M |
 | FR-4.2d | Collection index and collection pages | `app/collections/page.tsx`, `app/collections/[slug]/page.tsx` (5 static paths) | B, R, A |
 | FR-4.3 | Gallery, title, demo price, description, sizes, colours, quantity, add-to-bag, related, demo notice | `app/products/[slug]/page.tsx`, `components/product-gallery.tsx`, `components/add-to-bag.tsx`, `components/quantity-stepper.tsx` | B, M, K |
-| FR-4.3a | Variant selected before adding; quantity never ≤ 0 | Required-size validation with inline message; `clampQty` bounds in `bag-provider.tsx` | M, K |
+| FR-4.3a | Variant selected before adding; quantity never ≤ 0 | First available size and colour preselected and changeable; `clampQty` bounds in `bag-provider.tsx` | M, K |
 | FR-4.3b | Images have fallbacks | Local assets only; every frame has alt text and a focal point; no remote fetch can fail | I |
 | FR-4.4 | Add, remove, change quantity, show variants, subtotal, empty state, persistence | `components/bag-provider.tsx`, `bag-drawer.tsx`, `bag-view.tsx`, `app/bag/page.tsx` | M, K |
 | FR-4.4a | No transmission, no personal data, no orders, no payment implication | Bag is `localStorage` only; no network calls in the bag path; checkout states ordering is disabled | L, C, M |
@@ -46,7 +46,7 @@ Verification methods used throughout:
 | FR-9.2 | Stage 1 collects no personal information | No forms, no analytics, no cookies; only the bag key in `localStorage` | L, M |
 | FR-10 | No invented legal policies; drafts marked | `/privacy`, `/terms` carry a draft marker; `docs/*-DRAFT.md` carry a status line | M |
 | FR-11 | WCAG 2.2 AA target | Semantic landmarks, single `h1`, skip link, radio groups, focus management, contrast | A, K |
-| FR-12.1 | Performance: LCP, CLS, image and font delivery | Preloaded LCP frame, explicit `sizes`, lighter thumbnails, self-hosted fonts, static HTML | B, C, I |
+| FR-12.1 | Performance: LCP, CLS, image and font delivery | Preloaded LCP frame, explicit `sizes`, lighter thumbnails, self-hosted fonts, catalogue HTML rendered on the server for every filter state | B, C, I |
 | FR-12.2 | SEO: titles, descriptions, canonicals, OG, sitemap, robots, no fake structured data | `app/layout.tsx`, per-route metadata, `app/sitemap.ts`, `app/robots.ts`, `public/og.jpg`; deliberately no JSON-LD | B, M |
 | FR-13 | Testing and release acceptance | Matrix in [TESTING-AND-QA.md](TESTING-AND-QA.md) | B, L, T, A, R, C, I, K |
 | FR-17 | Git governance: branches, commit style, PR content, secrets | [CONTRIBUTING.md](CONTRIBUTING.md); `.env.example` with empty values | M |

@@ -21,11 +21,11 @@ export function Hero() {
               as a storefront concept for Baba Clothing.
             </p>
 
-            <div className="mt-9 flex flex-wrap gap-3">
-              <ButtonLink href="/shop" size="lg">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <ButtonLink href="/shop" size="lg" className="w-full sm:w-auto">
                 Shop the capsule
               </ButtonLink>
-              <ButtonLink href="/about" variant="outline" size="lg">
+              <ButtonLink href="/about" variant="outline" size="lg" className="w-full sm:w-auto">
                 Read the concept
               </ButtonLink>
             </div>

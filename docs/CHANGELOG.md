@@ -5,6 +5,24 @@ demonstration; no version has been released and nothing here is production softw
 
 ## Unreleased
 
+### Fixed
+
+- `/shop` shipped no products in its HTML: filtering ran in a client component behind
+  `useSearchParams`, so the prerendered page contained only a loading line and the footer jumped
+  0.33–0.46 CLS once hydration filled the grid. Filters and sort are now validated on the server
+  and every filter state renders its own catalogue HTML, with the same URLs as before.
+- The mobile filter row clipped three of six categories with no scroll affordance; the filters
+  wrap on small screens and the bar sticks only from `md` up.
+- The 404 page inherited the homepage title and canonical; it now declares its own title and
+  stays out of the index.
+- Hero and 404 call-to-action buttons were different widths on phones; they are full width below
+  `sm` and inline from `sm` up.
+
+### Changed
+
+- Home collections section is titled "Where to start" rather than "Three ways in", which
+  contradicted the five collections the site actually ships.
+
 ### Added
 
 - Collection architecture: `/collections` index and five statically generated

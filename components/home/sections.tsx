@@ -48,7 +48,7 @@ export function Collections() {
       <Container>
         <SectionHeading
           eyebrow="Collections"
-          title="Three ways in"
+          title="Where to start"
           action={{ label: "All collections", href: "/collections" }}
         />
         <ul className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-6">

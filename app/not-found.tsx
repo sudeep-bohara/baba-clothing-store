@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Page not found",
+  // Next marks the not-found route noindex on its own; declaring the title here stops the
+  // homepage title and canonical from being inherited.
+  alternates: {},
+};
 
 export default function NotFound() {
   return (
@@ -12,11 +20,11 @@ export default function NotFound() {
         The link may be out of date, or the piece may not exist in this demonstration
         catalogue.
       </p>
-      <div className="mt-9 flex flex-wrap gap-3">
-        <ButtonLink href="/shop" size="lg">
+      <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <ButtonLink href="/shop" size="lg" className="w-full sm:w-auto">
           Browse the shop
         </ButtonLink>
-        <ButtonLink href="/" variant="outline" size="lg">
+        <ButtonLink href="/" variant="outline" size="lg" className="w-full sm:w-auto">
           Back home
         </ButtonLink>
       </div>
