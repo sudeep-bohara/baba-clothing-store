@@ -133,3 +133,4 @@ default so the concept cannot be mistaken for the brand's official site.
    payment policies from verified operating facts.
 6. Get written approval from the brand owner for the concept itself, then follow
    [docs/DEPLOYMENT-GUIDE.md](docs/DEPLOYMENT-GUIDE.md) §5.
+   <!-- Repository maintenance update: November 25, 2026 -->
